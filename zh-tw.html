@@ -255,6 +255,13 @@
       font-size: 14px;
       letter-spacing: 0.02em;
       margin-bottom: var(--space-4);
+      overflow: hidden;
+    }
+    .project-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     .project-card-image--pet     { background: #E8EDE3; color: #6B7A5E; }
     .project-card-image--lottery { background: #ECE0E0; color: #886060; }
@@ -434,30 +441,34 @@
       <p class="eyebrow">作品</p>
       <h2 class="section-heading">一些小實驗、side projects、跟工具。</h2>
       <p class="projects-intro">
-        六個串成 pipeline 的寵物專案、一個會解夢解到樂透號碼的工具、一個會讀瓦斯表的 LINE 小幫手、跟這個網站本人。
+        一個寵物貼圖製造機、一個會解夢解到樂透號碼的工具、一個會讀瓦斯表的 LINE 小幫手。三個小工具，真的有人在用。
       </p>
       <div class="projects-grid">
 
         <article class="project-card">
-          <a href="https://hahadoggo.com" target="_blank" rel="noopener">
-            <div class="project-card-image project-card-image--pet">[ 狗狗系列圖片 ]</div>
-            <h3 class="project-card-title">狗狗系列 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
+          <a href="https://gogolinesticker.vercel.app/" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--pet">
+              <img src="gogo-stickers.jpg" alt="客製化寵物貼圖在 LINE 對話中" />
+            </div>
+            <h3 class="project-card-title">哈哈狗拍貼機 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            一個獨立的狗狗主題網站 — 寵物 AI 畫像跟貼圖、POD 周邊、零售跟食品、寵物友善場域指南。
+            上傳 1-8 張寵物照片，AI 自動生成 8 張符合 LINE 規格的貼圖，可以直接上架到 LINE 貼圖商店。
           </p>
-          <span class="project-card-status">進行中 · hahadoggo.com</span>
+          <span class="project-card-status">已上線 · gogolinesticker.vercel.app</span>
         </article>
 
         <article class="project-card">
-          <a href="#">
-            <div class="project-card-image project-card-image--lottery">[ 財神解夢圖片 ]</div>
-            <h3 class="project-card-title">財神解夢小工具</h3>
+          <a href="https://lottery-dream-decoder.vercel.app/" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--lottery">
+              <img src="lottery-dream.png" alt="財神解夢樂起來 — 樂透解夢海報" />
+            </div>
+            <h3 class="project-card-title">財神解夢樂起來 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            把昨晚的夢丟進去，吐出 AI 解夢圖跟樂透建議號碼。
+            把昨晚夢到的景物說給它聽，AI 畫出解夢圖，搭配吉利號碼，做成台灣樂透行「財神解夢」海報的數位版。
           </p>
-          <span class="project-card-status">已上線</span>
+          <span class="project-card-status">已上線 · v2.0</span>
         </article>
 
         <article class="project-card">

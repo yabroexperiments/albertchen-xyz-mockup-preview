@@ -244,6 +244,13 @@
       font-size: 14px;
       letter-spacing: 0.02em;
       margin-bottom: var(--space-4);
+      overflow: hidden;
+    }
+    .project-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     /* Distinct placeholder tints for the 4 cards — color comes through imagery only,
        which here is the placeholder block standing in for the eventual image. */
@@ -424,32 +431,35 @@
       <p class="eyebrow">Projects</p>
       <h2 class="section-heading">Small experiments, side ventures, and tools.</h2>
       <p class="projects-intro">
-        A six-project pet pipeline, a dream-to-lottery generator,
-        a gas-meter bot, and this site itself.
+        A pet sticker maker, a dream-to-lottery generator, a LINE bot for gas-meter readings.
+        Three small AI tools, real users.
       </p>
       <div class="projects-grid">
 
         <article class="project-card">
-          <a href="https://hahadoggo.com" target="_blank" rel="noopener">
-            <div class="project-card-image project-card-image--pet">[ pet niche image ]</div>
-            <h3 class="project-card-title">Pet niche · 狗狗系列 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
+          <a href="https://gogolinesticker.vercel.app/" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--pet">
+              <img src="gogo-stickers.jpg" alt="Custom pet stickers in a LINE chat conversation" />
+            </div>
+            <h3 class="project-card-title">哈哈狗拍貼機 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            A dog-niche site — stickers, AI portraits, POD merch, retail and food, plus a
-            pet-friendly venue directory.
+            Upload 1–8 pet photos → AI generates 8 LINE-spec stickers ready to ship to the LINE Store.
           </p>
-          <span class="project-card-status">building · hahadoggo.com</span>
+          <span class="project-card-status">launched · gogolinesticker.vercel.app</span>
         </article>
 
         <article class="project-card">
-          <a href="#">
-            <div class="project-card-image project-card-image--lottery">[ lotterydream image ]</div>
-            <h3 class="project-card-title">LotteryDreamDecoder</h3>
+          <a href="https://lottery-dream-decoder.vercel.app/" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--lottery">
+              <img src="lottery-dream.png" alt="財神解夢樂起來 — digital lottery dream-decoder poster with gold ingots" />
+            </div>
+            <h3 class="project-card-title">財神解夢樂起來 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            Turn a dream into an AI-illustrated interpretation plus suggested lottery numbers.
+            Tell it what you dreamed last night → AI illustrates the dream and suggests lucky lottery numbers, in the style of Taiwan's classic 財神解夢 lottery-shop posters.
           </p>
-          <span class="project-card-status">launched</span>
+          <span class="project-card-status">launched · v2.0</span>
         </article>
 
         <article class="project-card">
