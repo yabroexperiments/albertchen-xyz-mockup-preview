@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>albertchen.xyz — 首頁 mockup（繁體中文）</title>
+  <!--
+    繁體中文版首頁 mockup. 對應 home-mockup.html (英文版).
+    語言：zh-Hant-TW（嚴格 Traditional Chinese / Taiwan，無簡體字）.
+    語氣：陳亞伯 voice (per ../_shared/brand/voice-guide-zh.md).
+
+    Source specs:
+      - drafts/home-wireframe-zh-TW.md (繁中 section-by-section copy)
+      - drafts/design-tokens.md  (與英文版共用同一套 tokens)
+    Aesthetic reference: yetch.studio (white, charcoal, sans, no shadows).
+    Structure reference: socratisp.com (single-scroll Home flow).
+
+    開檔方式：
+      open albertchen.xyz/drafts/home-mockup-zh-TW.html
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Inter for Latin chars, Noto Sans TC for Traditional Chinese (Taiwan) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ---------- Design tokens (與英文版 home-mockup.html 共用) ---------- */
+    :root {
+      --bg:           #FFFFFF;
+      --bg-alt:       #FAFAFA;
+      --text:         #1A1A1A;
+      --text-muted:   #6B6B6B;
+      --text-subtle:  #999999;
+      --divider:      #EAEAEA;
+
+      /* Latin first (Inter), then Traditional Chinese (Noto Sans TC),
+         then macOS / Windows system CJK fallbacks. */
+      --font-sans:    "Inter", "Noto Sans TC", system-ui, -apple-system,
+                      "PingFang TC", "Heiti TC", "Microsoft JhengHei",
+                      sans-serif;
+
+      --space-1:  4px;
+      --space-2:  8px;
+      --space-3:  12px;
+      --space-4:  16px;
+      --space-5:  24px;
+      --space-6:  32px;
+      --space-7:  48px;
+      --space-8:  64px;
+      --space-9:  96px;
+      --space-10: 128px;
+
+      --width-text: 720px;
+      --width-grid: 1200px;
+      --width-page: 1280px;
+    }
+
+    /* ---------- Reset + base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;       /* 繁中需要更寬的 line-height */
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 150ms ease-out;
+    }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: 0; }
+    p { margin: 0; }
+    button { font: inherit; }
+
+    /* ---------- Layout primitives ---------- */
+    .page {
+      max-width: var(--width-page);
+      margin: 0 auto;
+      padding-left: var(--space-7);
+      padding-right: var(--space-7);
+    }
+    .section {
+      padding-top: var(--space-9);
+      padding-bottom: var(--space-9);
+    }
+    .section--narrow > * { max-width: var(--width-text); }
+    .eyebrow {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-bottom: var(--space-4);
+    }
+
+    /* ---------- Section 0: Nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--divider);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--space-4);
+      padding-bottom: var(--space-4);
+    }
+    .nav-brand {
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: var(--space-6);
+      font-size: 15px;
+      color: var(--text-muted);
+      align-items: center;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-lang {
+      display: inline-flex;
+      gap: var(--space-2);
+      padding-left: var(--space-5);
+      border-left: 1px solid var(--divider);
+      margin-left: var(--space-2);
+    }
+    .nav-lang a { color: var(--text-subtle); }
+    .nav-lang a.is-active { color: var(--text); font-weight: 600; }
+    .nav-lang a.is-active:hover { text-decoration: none; cursor: default; }
+
+    /* ---------- Section 1: Hero ---------- */
+    .hero { padding-top: var(--space-10); padding-bottom: var(--space-10); }
+    .hero-greeting {
+      font-size: 19px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-5);
+    }
+    .hero-display {
+      font-size: clamp(48px, 9vw, 80px);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-7);
+      /* English tagline — use Inter exclusively for tighter look */
+      font-family: "Inter", sans-serif;
+    }
+    .hero-body {
+      font-size: 18px;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 680px;
+      margin-bottom: var(--space-7);
+    }
+    .hero-ctas {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-7);
+    }
+    .btn {
+      display: inline-block;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 150ms ease-out;
+    }
+    .btn:hover { background: var(--text-muted); text-decoration: none; }
+    .btn--secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--text);
+    }
+    .btn--secondary:hover { background: var(--text); color: var(--bg); }
+    .social-row {
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+    .social-row a:not(:last-child)::after {
+      content: " · ";
+      color: var(--text-subtle);
+      margin: 0 var(--space-2);
+    }
+
+    /* ---------- Section 2: About teaser ---------- */
+    .about-narrative p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: var(--space-5);
+    }
+    .about-narrative p:last-of-type { margin-bottom: var(--space-6); }
+
+    /* ---------- Section 3: Currently building ---------- */
+    .now-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-6) 0;
+    }
+    .now-list li {
+      font-size: 18px;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--divider);
+      line-height: 1.7;
+    }
+    .now-list li:last-child { border-bottom: none; }
+    .now-list li::before {
+      content: "·";
+      color: var(--text-subtle);
+      margin-right: var(--space-3);
+    }
+    .now-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .now-meta a { color: var(--text); }
+
+    /* ---------- Section 4: Projects grid ---------- */
+    .projects-intro {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: var(--space-8);
+      line-height: 1.75;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8) var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+    .project-card { display: flex; flex-direction: column; }
+    .project-card-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      background: var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-subtle);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-4);
+    }
+    .project-card-image--pet     { background: #E8EDE3; color: #6B7A5E; }
+    .project-card-image--lottery { background: #ECE0E0; color: #886060; }
+    .project-card-image--gas     { background: #DEE3EC; color: #5A6680; }
+    .project-card-image--meta    { background: #ECE9E3; color: #807760; }
+    .project-card-title {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0;
+      margin-bottom: var(--space-2);
+      color: var(--text);
+    }
+    .project-card-title:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .project-card-blurb {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-3);
+      max-width: 95%;
+      line-height: 1.75;
+    }
+    .project-card-status {
+      font-size: 13px;
+      color: var(--text-subtle);
+      letter-spacing: 0.02em;
+    }
+    .more-link {
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ---------- Section 5: Notes ---------- */
+    .notes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 var(--space-6) 0;
+    }
+    .notes-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--divider);
+      font-size: 17px;
+      gap: var(--space-5);
+    }
+    .notes-list a { color: var(--text); }
+    .notes-date { font-size: 14px; color: var(--text-subtle); white-space: nowrap; }
+    .notes-placeholder {
+      font-size: 13px;
+      color: var(--text-subtle);
+      margin-bottom: var(--space-5);
+    }
+
+    /* ---------- Section 7: Contact ---------- */
+    .contact-block p {
+      font-size: 18px;
+      margin-bottom: var(--space-4);
+      line-height: 1.75;
+    }
+    .contact-block .newsletter {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* ---------- Section 8: Footer ---------- */
+    .footer {
+      border-top: 1px solid var(--divider);
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-7);
+      margin-top: var(--space-9);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-5);
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-meta a:not(:last-child)::after {
+      content: " · ";
+      color: var(--text-subtle);
+      margin: 0 var(--space-2);
+    }
+
+    /* Section header */
+    .section-heading {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 1.35;
+      margin-bottom: var(--space-5);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 760px) {
+      .page {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+      }
+      .section {
+        padding-top: var(--space-7);
+        padding-bottom: var(--space-7);
+      }
+      .hero { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+      .projects-grid { grid-template-columns: 1fr; gap: var(--space-7); }
+      .nav-links { gap: var(--space-4); font-size: 14px; }
+      .section-heading { font-size: 26px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .notes-list li { flex-direction: column; align-items: flex-start; gap: var(--space-1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 0: Nav (sticky) -->
+  <nav class="nav">
+    <div class="page nav-inner">
+      <div class="nav-brand">albert chen</div>
+      <div class="nav-links">
+        <a href="#now">現在</a>
+        <a href="#projects">作品</a>
+        <a href="#notes">筆記</a>
+        <a href="#about">關於</a>
+        <a href="#contact">聯絡</a>
+        <span class="nav-lang">
+          <a href="index.html">EN</a>
+          <a class="is-active">中</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Section 1: Hero -->
+  <section class="hero">
+    <div class="page">
+      <p class="hero-greeting">嗨，我是阿伯。</p>
+      <h1 class="hero-display">albert do it now</h1>
+      <p class="hero-body">
+        用 AI 跟雙手做一些有的沒的小東西 — 寵物貼圖、解夢工具、LINE 小幫手。邊做邊把過程寫下來，包括壞掉的部分。
+      </p>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn">看看我在做什麼</a>
+        <a href="#notes" class="btn btn--secondary">讀我的筆記</a>
+      </div>
+      <div class="social-row">
+        <a href="#">X</a><a href="#">GitHub</a><a href="#">LinkedIn</a><a href="#">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: About teaser -->
+  <section class="section section--narrow" id="about">
+    <div class="page">
+      <p class="eyebrow">關於我</p>
+      <h2 class="section-heading">我是一個什麼都想試試看的素人實驗家。</h2>
+      <div class="about-narrative">
+        <p>
+          在行銷、商用不動產、產品經理、航空忠誠度 SaaS 等領域繞了 10 多年，最近終於把時間花在用 AI 和自己的雙手做一些小東西，順便把過程記下來 — 哪些有用、哪些壞掉、哪些半途而廢，都寫。
+        </p>
+        <p>動手 &gt; 規劃。先求好玩，再求對別人有用。</p>
+      </div>
+      <a href="#" class="more-link">更多關於我 →</a>
+    </div>
+  </section>
+
+  <!-- Section 3: Currently building -->
+  <section class="section section--narrow" id="now">
+    <div class="page">
+      <p class="eyebrow">現在</p>
+      <h2 class="section-heading">現在在做</h2>
+      <ul class="now-list">
+        <li>重新設計 albertchen.xyz（就是現在你在看的這個網站）</li>
+        <li>把財神解夢小工具推到 v2</li>
+        <li>想 狗狗系列的統一網域要長什麼樣</li>
+      </ul>
+      <div class="now-meta">
+        <span>更新於 2026-05-19</span>
+        <a href="#">完整 /now 頁面 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Projects -->
+  <section class="section" id="projects">
+    <div class="page">
+      <p class="eyebrow">作品</p>
+      <h2 class="section-heading">一些小實驗、side projects、跟工具。</h2>
+      <p class="projects-intro">
+        六個串成 pipeline 的寵物專案、一個會解夢解到樂透號碼的工具、一個會讀瓦斯表的 LINE 小幫手、跟這個網站本人。
+      </p>
+      <div class="projects-grid">
+
+        <article class="project-card">
+          <a href="https://hahadoggo.com" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--pet">[ 狗狗系列圖片 ]</div>
+            <h3 class="project-card-title">狗狗系列 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
+          </a>
+          <p class="project-card-blurb">
+            一個獨立的狗狗主題網站 — 寵物 AI 畫像跟貼圖、POD 周邊、零售跟食品、寵物友善場域指南。
+          </p>
+          <span class="project-card-status">進行中 · hahadoggo.com</span>
+        </article>
+
+        <article class="project-card">
+          <a href="#">
+            <div class="project-card-image project-card-image--lottery">[ 財神解夢圖片 ]</div>
+            <h3 class="project-card-title">財神解夢小工具</h3>
+          </a>
+          <p class="project-card-blurb">
+            把昨晚的夢丟進去，吐出 AI 解夢圖跟樂透建議號碼。
+          </p>
+          <span class="project-card-status">已上線</span>
+        </article>
+
+        <article class="project-card">
+          <a href="#">
+            <div class="project-card-image project-card-image--gas">[ 瓦斯抄表小幫手圖片 ]</div>
+            <h3 class="project-card-title">瓦斯抄表小幫手</h3>
+          </a>
+          <p class="project-card-blurb">
+            拍張瓦斯表照片丟到 LINE，自動讀數、自動回報。
+          </p>
+          <span class="project-card-status">進行中</span>
+        </article>
+
+        <article class="project-card">
+          <a href="#">
+            <div class="project-card-image project-card-image--meta">[ albertchen.xyz 圖片 ]</div>
+            <h3 class="project-card-title">albertchen.xyz</h3>
+          </a>
+          <p class="project-card-blurb">
+            就是現在這個網站本人。自己跟自己 build in public。
+          </p>
+          <span class="project-card-status">進行中</span>
+        </article>
+
+      </div>
+      <a href="#" class="more-link">看所有作品 →</a>
+    </div>
+  </section>
+
+  <!-- Section 5: Notes -->
+  <section class="section section--narrow" id="notes">
+    <div class="page">
+      <p class="eyebrow">筆記</p>
+      <h2 class="section-heading">最近寫的東西。</h2>
+      <p class="notes-placeholder">
+        Placeholder 標題 — wireframe 規則：v1 沒有 3 篇以上真實可發的筆記就整段拿掉。
+      </p>
+      <ul class="notes-list">
+        <li>
+          <a href="#">阿伯學AI - 把財神解夢推到 v2 的小心得</a>
+          <span class="notes-date">2026-05-18</span>
+        </li>
+        <li>
+          <a href="#">這次改版為什麼選 Astro 不選 Next.js</a>
+          <span class="notes-date">2026-05-12</span>
+        </li>
+        <li>
+          <a href="#">狗狗好穿這個點子終於想通了</a>
+          <span class="notes-date">2026-05-03</span>
+        </li>
+      </ul>
+      <a href="#" class="more-link">讀所有筆記 →</a>
+    </div>
+  </section>
+
+  <!-- Section 7: Contact -->
+  <section class="section section--narrow" id="contact">
+    <div class="page contact-block">
+      <p class="eyebrow">聯絡</p>
+      <h2 class="section-heading">聯絡阿伯。</h2>
+      <p>寫信給我：<a href="mailto:hello@albertchen.xyz"><strong>hello@albertchen.xyz</strong></a></p>
+      <p>其他地方也找得到我：<a href="#">X</a> · <a href="#">GitHub</a> · <a href="#">LinkedIn</a> · <a href="#">Threads</a></p>
+      <p class="newsletter">電子報快了啦，正在搞。</p>
+    </div>
+  </section>
+
+  <!-- Section 8: Footer -->
+  <footer class="footer">
+    <div class="page footer-inner">
+      <div>© 2026 Albert Chen · albertchen.xyz</div>
+      <div class="footer-meta">
+        <a href="index.html">English version →</a><a href="#">RSS</a><a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
