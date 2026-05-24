@@ -317,6 +317,54 @@
       margin-bottom: var(--space-5);
     }
 
+    /* ---------- Section 4.5: Newsletter ---------- */
+    .newsletter-block {
+      background: var(--bg-alt);
+      padding: var(--space-8) var(--space-7);
+      border-radius: 8px;
+    }
+    .newsletter-block .section-heading {
+      font-size: 28px;
+      margin-bottom: var(--space-3);
+      line-height: 1.4;
+    }
+    .newsletter-block p.newsletter-blurb {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-6);
+      max-width: 600px;
+      line-height: 1.8;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-bottom: var(--space-3);
+    }
+    .newsletter-form input[type="email"] {
+      flex: 1 1 280px;
+      min-width: 0;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 150ms ease-out;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border-color: var(--text);
+    }
+    .newsletter-form button { white-space: nowrap; }
+    .newsletter-disclaimer {
+      font-size: 13px;
+      color: var(--text-subtle);
+      line-height: 1.6;
+    }
+
     /* ---------- Section 7: Contact ---------- */
     .contact-block p {
       font-size: 18px;
@@ -472,14 +520,14 @@
         </article>
 
         <article class="project-card">
-          <a href="#">
-            <div class="project-card-image project-card-image--gas">[ 瓦斯抄表小幫手圖片 ]</div>
-            <h3 class="project-card-title">瓦斯抄表小幫手</h3>
+          <a href="https://line.me/R/ti/p/@017ondzk" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--gas">[ 瓦斯抄表小幫手 ]</div>
+            <h3 class="project-card-title">瓦斯抄表小幫手 <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            拍張瓦斯表照片丟到 LINE，自動讀數、自動回報。
+            拍張瓦斯表的照片丟到 LINE，AI 自動讀數、自動回報。用 GPT + Make.com 串起來，一秒完成抄表。
           </p>
-          <span class="project-card-status">進行中</span>
+          <span class="project-card-status">測試中 · 加 LINE @017ondzk</span>
         </article>
 
       </div>
@@ -513,6 +561,25 @@
     </div>
   </section>
 
+  <!-- Section 4.5: 電子報 (新增 2026-05-23) -->
+  <section class="section section--narrow" id="newsletter">
+    <div class="page">
+      <div class="newsletter-block">
+        <p class="eyebrow">電子報</p>
+        <h2 class="section-heading">想第一時間試用我的新作品？</h2>
+        <p class="newsletter-blurb">
+          如果你對我正在做的新工具有興趣、或想看看我在 AI 上學到了什麼，留下 email — 有新東西上線、或寫了新筆記，我會第一時間通知你。
+        </p>
+        <!-- TODO Phase 1: 把 action="#" 換成真實的電子報服務 endpoint (MailerLite/Substack/ConvertKit) -->
+        <form class="newsletter-form" action="#" method="post" novalidate>
+          <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required />
+          <button type="submit" class="btn">訂閱</button>
+        </form>
+        <p class="newsletter-disclaimer">不會發垃圾信，隨時可以取消訂閱。</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Section 5: 關於 (與聯絡合併) — 從 Section 2 移到這裡 2026-05-19 -->
   <section class="section section--narrow" id="about">
     <div class="page">
@@ -529,7 +596,7 @@
       <h3 style="margin-top: 64px; margin-bottom: 16px; font-size: 22px; font-weight: 600; letter-spacing: 0;">聯絡阿伯</h3>
       <p style="font-size: 18px; margin-bottom: 16px; line-height: 1.75;">寫信給我：<a href="mailto:hello@albertchen.xyz"><strong>hello@albertchen.xyz</strong></a></p>
       <p style="font-size: 18px; margin-bottom: 16px; line-height: 1.75;">其他地方也找得到我：<a href="https://www.instagram.com/albert_do_it_now/" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/albertchenxyz" target="_blank" rel="noopener">X</a> · <a href="https://www.threads.com/@albert_do_it_now" target="_blank" rel="noopener">Threads</a> · <a href="https://www.youtube.com/@albert_do_it_now" target="_blank" rel="noopener">YouTube</a></p>
-      <p style="color: var(--text-muted); font-size: 16px;">電子報快了啦，正在搞。</p>
+      <p style="color: var(--text-muted); font-size: 16px;"><a href="#newsletter">訂閱電子報 ↑</a></p>
     </div>
   </section>
 

@@ -308,6 +308,52 @@
       margin-bottom: var(--space-5);
     }
 
+    /* ---------- Section 4.5: Newsletter ---------- */
+    .newsletter-block {
+      background: var(--bg-alt);
+      padding: var(--space-8) var(--space-7);
+      border-radius: 8px;
+    }
+    .newsletter-block .section-heading {
+      font-size: 28px;
+      margin-bottom: var(--space-3);
+    }
+    .newsletter-block p.newsletter-blurb {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: var(--space-6);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-bottom: var(--space-3);
+    }
+    .newsletter-form input[type="email"] {
+      flex: 1 1 280px;
+      min-width: 0;
+      padding: 12px 16px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 150ms ease-out;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border-color: var(--text);
+    }
+    .newsletter-form button { white-space: nowrap; }
+    .newsletter-disclaimer {
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
     /* ---------- Section 7: Contact ---------- */
     .contact-block p {
       font-size: 18px;
@@ -463,14 +509,14 @@
         </article>
 
         <article class="project-card">
-          <a href="#">
-            <div class="project-card-image project-card-image--gas">[ line gas helper image ]</div>
-            <h3 class="project-card-title">LINE Gas Helper</h3>
+          <a href="https://line.me/R/ti/p/@017ondzk" target="_blank" rel="noopener">
+            <div class="project-card-image project-card-image--gas">[ 瓦斯抄表小幫手 / Gas Meter Helper ]</div>
+            <h3 class="project-card-title">瓦斯抄表小幫手 / Gas Meter Helper <span style="font-size:0.75em;color:var(--text-subtle);">↗</span></h3>
           </a>
           <p class="project-card-blurb">
-            A LINE bot that reads a photo of your gas meter and submits the monthly reading.
+            A LINE bot. Snap a photo of your gas meter, AI reads the digits and files your monthly report. Built with GPT + Make.com.
           </p>
-          <span class="project-card-status">building</span>
+          <span class="project-card-status">beta · add LINE @017ondzk</span>
         </article>
 
       </div>
@@ -504,6 +550,25 @@
     </div>
   </section>
 
+  <!-- Section 4.5: Newsletter (added 2026-05-23) -->
+  <section class="section section--narrow" id="newsletter">
+    <div class="page">
+      <div class="newsletter-block">
+        <p class="eyebrow">Newsletter</p>
+        <h2 class="section-heading">Try my new tools first.</h2>
+        <p class="newsletter-blurb">
+          Interested in trying out the new things I'm working on, or curious about what I'm learning about AI? Drop your email — I'll send updates as new tools ship and as I figure out what works.
+        </p>
+        <!-- TODO Phase 1: replace action="#" with real provider endpoint (MailerLite/Buttondown/ConvertKit) -->
+        <form class="newsletter-form" action="#" method="post" novalidate>
+          <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required />
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+        <p class="newsletter-disclaimer">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Section 5: About (with contact inline) — moved here from Section 2 on 2026-05-19 -->
   <section class="section section--narrow" id="about">
     <div class="page">
@@ -523,7 +588,7 @@
       <h3 style="margin-top: 64px; margin-bottom: 16px; font-size: 22px; font-weight: 600; letter-spacing: -0.01em;">Get in touch</h3>
       <p style="font-size: 18px; margin-bottom: 16px;">Drop a line: <a href="mailto:hello@albertchen.xyz"><strong>hello@albertchen.xyz</strong></a></p>
       <p style="font-size: 18px; margin-bottom: 16px;">Elsewhere: <a href="https://www.instagram.com/albert_do_it_now/" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/albertchenxyz" target="_blank" rel="noopener">X</a> · <a href="https://www.threads.com/@albert_do_it_now" target="_blank" rel="noopener">Threads</a> · <a href="https://www.youtube.com/@albert_do_it_now" target="_blank" rel="noopener">YouTube</a></p>
-      <p style="color: var(--text-muted); font-size: 16px;">Newsletter coming soon — working on it.</p>
+      <p style="color: var(--text-muted); font-size: 16px;"><a href="#newsletter">Subscribe to the newsletter ↑</a></p>
     </div>
   </section>
 
